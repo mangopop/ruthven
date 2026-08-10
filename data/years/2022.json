@@ -2,6 +2,6 @@
   "year": 2022,
   "venue": "Venue Two (TBC)",
   "location": "Scotland",
-  "participants": ["angus-ruthven", "dougal-ruthven", "fergus-ruthven", "hamish-ruthven"],
-  "tankard": { "winner": "dougal-ruthven" }
+  "participants": ["chris-ruthven", "patrick-ruthven", "aidan-ruthven", "nicholas-ruthven"],
+  "tankard": { "winner": "patrick-ruthven" }
 }

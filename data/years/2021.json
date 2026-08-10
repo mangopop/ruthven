@@ -2,6 +2,6 @@
   "year": 2021,
   "venue": "Venue One (TBC)",
   "location": "Scotland",
-  "participants": ["angus-ruthven", "dougal-ruthven", "fergus-ruthven", "hamish-ruthven"],
-  "tankard": { "winner": "angus-ruthven" }
+  "participants": ["chris-ruthven", "patrick-ruthven", "aidan-ruthven", "nicholas-ruthven"],
+  "tankard": { "winner": "chris-ruthven" }
 }

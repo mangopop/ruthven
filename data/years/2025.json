@@ -5,15 +5,14 @@
   "date": "2025-06-14",
   "course": "sample-links",
   "participants": [
-    "angus-ruthven",
-    "dougal-ruthven",
-    "fergus-ruthven",
-    "hamish-ruthven",
-    "callum-macleod",
+    "chris-ruthven",
+    "patrick-ruthven",
+    "aidan-ruthven",
+    "nicholas-ruthven",
     "ewan-fraser",
     "rory-campbell",
     "jock-stewart"
   ],
-  "tankard": { "winner": "angus-ruthven" },
-  "phallus": { "winner": "callum-macleod", "decidedByPuttOff": true }
+  "tankard": { "winner": "chris-ruthven" },
+  "phallus": { "winner": "ewan-fraser", "decidedByPuttOff": true }
 }

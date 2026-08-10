@@ -1,0 +1,21 @@
+{
+    "year": 2026,
+    "venue": "Cambridge Country Club",
+    "location": "England",
+    "date": "2026-08-08",
+    "course": "sample-links",
+    "participants": [
+        "chris-ruthven",
+        "patrick-ruthven",
+        "aidan-ruthven",
+        "nicholas-ruthven",
+        "rich-guy"
+    ],
+    "tankard": {
+        "winner": "aidan-ruthven"
+    },
+    "phallus": {
+        "winner": "rich-guy",
+        "decidedByPuttOff": false
+    }
+}
