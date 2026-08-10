@@ -4,14 +4,15 @@
  */
 export const images = {
   /** The goat-and-clubs family crest - hero, nav and footer mark. */
-  crest: null as string | null,
+  crest: 'crest.png' as string | null,
   /** The Ruthven Cup Tankard - trophies section. */
   tankard: null as string | null,
   /** The Phallus Trophy - trophies section. */
-  phallus: null as string | null,
+  phallus: 'phallus.png' as string | null,
   /** Photo strip of the family cloth; replaces the CSS tartan bands when set. */
-  cloth: null as string | null,
+  cloth: 'cloth.png' as string | null,
 };
 
 export const motto = 'Deid schaw';
 export const established = 2021;
+

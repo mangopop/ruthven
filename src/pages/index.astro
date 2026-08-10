@@ -69,14 +69,15 @@ const romanYear = (n: number) => {
   <section class="honours" id="honours">
     <div class="measure">
       <div class="label reveal">The Honours Board</div>
-      <h2 class="display reveal">{years.length} years,<br />written in <em>gold.</em></h2>
+      <h2 class="display reveal">{years.length} years,<br />etched into <em>Ruthven</em> history.</h2>
       {
-        years.map((y) => (
+        [...years].reverse().map((y) => (
           <a class="row reveal" href={href(`/${y.year}/`)}>
             <div class="year">{y.year}</div>
             <div class="who">
               {winnerName(y.tankard?.winner) ?? '— to be engraved —'}
               {y.year === established && <i>the inaugural champion</i>}
+              {y.year === latest.year && <i>the reigning champion</i>}
               {y.tankard?.decidedByPuttOff && <i>won on the midget putter</i>}
             </div>
             <div class="where">{y.venue}</div>
@@ -131,6 +132,9 @@ const romanYear = (n: number) => {
 
   <section class="trophies" id="trophies">
     <div class="measure">
+      <div class="label reveal">The Trophies</div>
+      <h2 class="display reveal">Two prizes,<br />one <em>Cup.</em></h2>
+      <div class="trophy-grid">
       <div class="trophy reveal">
         {
           images.tankard ? (
@@ -140,7 +144,7 @@ const romanYear = (n: number) => {
           )
         }
         <h3>The <em>Tankard</em></h3>
-        <p>Contested by the Ruthven family. Engraved each year with the winner's name.</p>
+        <p>The Ruthven families yellow jack. Engraved each year with the winner's name, next year Nicholas, next year...</p>
       </div>
       <div class="trophy reveal">
         {
@@ -151,7 +155,8 @@ const romanYear = (n: number) => {
           )
         }
         <h3>The <em>Phallus Trophy</em></h3>
-        <p>The best of the rest. Coveted, feared, photographed reluctantly.</p>
+        <p>The best of the rest. “The big one” Coveted, feared, seen more action that Elton John's dildo.</p>
+      </div>
       </div>
     </div>
   </section>
@@ -508,10 +513,14 @@ const romanYear = (n: number) => {
       color: var(--gold-bright);
     }
 
-    .trophies .measure {
+    .trophies {
+      padding-top: 0;
+    }
+    .trophy-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2px;
+      gap: 48px;
+      margin-top: 56px;
     }
     .trophy {
       padding: 72px 48px;
@@ -570,7 +579,7 @@ const romanYear = (n: number) => {
         grid-template-columns: 1fr;
         gap: 36px;
       }
-      .trophies .measure {
+      .trophy-grid {
         grid-template-columns: 1fr;
       }
       .row {

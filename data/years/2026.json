@@ -3,19 +3,27 @@
     "venue": "Cambridge Country Club",
     "location": "England",
     "date": "2026-08-08",
-    "course": "sample-links",
+    "groupPhoto": "2026-group.jpeg",
+    "course": "cambridge-country-club",
     "participants": [
         "chris-ruthven",
         "patrick-ruthven",
         "aidan-ruthven",
         "nicholas-ruthven",
-        "rich-guy"
+        "rich-sinclair",
+        "simon-norton",
+        "ben-stone",
+        "tim",
+        "neil-h",
+        "danny",
+        "grundy",
+        "matt"
     ],
     "tankard": {
         "winner": "aidan-ruthven"
     },
     "phallus": {
-        "winner": "rich-guy",
+        "winner": "rich-sinclair",
         "decidedByPuttOff": false
     }
 }
