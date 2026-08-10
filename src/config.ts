@@ -6,7 +6,7 @@ export const images = {
   /** The goat-and-clubs family crest - hero, nav and footer mark. */
   crest: 'crest.png' as string | null,
   /** The Ruthven Cup Tankard - trophies section. */
-  tankard: null as string | null,
+  tankard: 'cup.png' as string | null,
   /** The Phallus Trophy - trophies section. */
   phallus: 'phallus.png' as string | null,
   /** Photo strip of the family cloth; replaces the CSS tartan bands when set. */
@@ -15,4 +15,6 @@ export const images = {
 
 export const motto = 'Deid schaw';
 export const established = 2021;
+
+
 

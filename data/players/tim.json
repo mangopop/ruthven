@@ -2,5 +2,6 @@
   "name": "Tim",
   "family": false,
   "since": 2026,
-  "bio": "SAMPLE PLAYER - replace with a real bio. Guest. Warms up on the first tee, never anywhere else."
+  "headshot": "tim.jpg",
+  "bio": "Guest. Warms up on the first tee, never anywhere else."
 }

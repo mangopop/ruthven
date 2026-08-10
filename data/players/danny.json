@@ -2,5 +2,6 @@
   "name": "Danny",
   "family": false,
   "since": 2026,
-  "bio": "SAMPLE PLAYER - replace with a real bio. Guest. Plays fast, talks faster, blames the wind either way."
+  "headshot": "danny.jpg",
+  "bio": "Guest. Plays fast, talks faster, blames the wind either way."
 }

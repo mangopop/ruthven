@@ -106,7 +106,7 @@ const romanYear = (n: number) => {
     <div class="measure">
       <div class="label reveal">The Field</div>
       <h2 class="display reveal">Family, friends,<br />and <em>rivals.</em></h2>
-      <p class="lede reveal">Every player who has ever teed it up for the Cup — champions marked in gold.</p>
+      <p class="lede reveal">Every player who has ever teed it up for the Cup.</p>
       <div class="grid">
         {
           preview.map(({ slug, player, stats }) => {
@@ -544,9 +544,11 @@ const romanYear = (n: number) => {
       margin: 0 auto 30px;
       animation: float 5s ease-in-out infinite;
     }
-    .trophy:nth-child(2) .plinth,
-    .trophy:nth-child(2) .trophy-img {
+    .trophy:nth-child(2) .plinth {
       animation-delay: 2.5s;
+    }
+    .trophy:nth-child(2) .trophy-img {
+      animation: bounce 5s ease-in-out infinite;
     }
     @keyframes float {
       0%,
@@ -555,6 +557,50 @@ const romanYear = (n: number) => {
       }
       50% {
         transform: translateY(-8px);
+      }
+    }
+    @keyframes bounce {
+      0% {
+        transform: rotate(0deg) translateY(0);
+      }
+      19% {
+        transform: rotate(0deg) translateY(-16px);
+      }
+      38% {
+        transform: rotate(0deg) translateY(0);
+      }
+      57% {
+        transform: rotate(0deg) translateY(-16px);
+      }
+      65% {
+        transform: rotate(45deg) translateY(-16px);
+      }
+      69% {
+        transform: rotate(45deg) translateY(-36px);
+      }
+      73% {
+        transform: rotate(45deg) translateY(-16px);
+      }
+      77% {
+        transform: rotate(45deg) translateY(-36px);
+      }
+      81% {
+        transform: rotate(45deg) translateY(-16px);
+      }
+      85% {
+        transform: rotate(45deg) translateY(-36px);
+      }
+      89% {
+        transform: rotate(45deg) translateY(-16px);
+      }
+      100% {
+        transform: rotate(0deg) translateY(0);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .trophy-img,
+      .plinth {
+        animation: none;
       }
     }
     .trophy h3 {
