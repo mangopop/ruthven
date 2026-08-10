@@ -85,8 +85,8 @@ The group photo, displayed on that year's page.
 
 ## Pages
 
-1. **Home** - the approved "heritage wow" design: full-screen hero with the Tankard photo, the
-   motto, staggered type entrance and gold shimmer; scrolling marquee of motto and facts; honours
+1. **Home** - the approved "heritage wow" design: full-screen hero with the family crest (the
+   goat-and-clubs logo) above the title, the motto, staggered type entrance and gold shimmer; scrolling marquee of motto and facts; honours
    board (giant outlined year numerals, winner, venue - generated from year files); count-up stats
    band; player grid preview; side-by-side Tankard and Phallus Trophy panels; tartan trim bands.
 2. **Year page** (`/2025/` etc.) - the approved layout: year switcher across the top; venue and
@@ -116,8 +116,13 @@ Adding 2026 requires no template changes.
   accent, parchment ink (#f2ecdc). Matches the family cloth (green, gold, red).
 - **Tartan**: thin woven trim bands (CSS gradients) at page top and footer. Built as one swappable
   component so a photo strip of the real cloth replaces it later with a one-line change.
-- **Placeholders**: cup/tankard photo, trophy photo, and cloth are dashed-border placeholder
-  blocks wired so dropping in real images is a one-line change each.
+- **Crest**: the goat-and-clubs logo is the site mark. It sits above the title in the hero and
+  as a small mark in the nav (replacing the text-only wordmark) and footer. Until Simon supplies
+  the file, a placeholder holds its spot like the other images.
+- **Placeholders**: crest, tankard photo, trophy photo, and cloth are dashed-border placeholder
+  blocks wired so dropping in real images is a one-line change each. The tankard photo lives in
+  the Tankard panel of the trophies section (and can headline the honours board), not the hero -
+  the crest owns the hero.
 - **Animation**: hero entrance choreography (staggered line rise, shimmer on the italic word),
   scroll-triggered fade-up reveals, count-up stats, marquee, hover states (honours years fill
   gold, player tiles Ken Burns zoom). All respect `prefers-reduced-motion`.
