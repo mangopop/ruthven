@@ -1,0 +1,160 @@
+---
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/fraunces/wght-italic.css';
+import '@fontsource/archivo/400.css';
+import '@fontsource/archivo/500.css';
+import '@fontsource/archivo/600.css';
+import '../styles/global.css';
+import Tartan from '../components/Tartan.astro';
+import { href } from '../lib/paths';
+import { established, motto } from '../config';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** The homepage draws its own transparent-over-hero nav treatment. */
+  heroNav?: boolean;
+}
+const { title, description = `The Ruthven Cup - the family golf tournament. ${motto}.`, heroNav = false } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <nav class:list={{ hero: heroNav }}>
+      <a class="wordmark" href={href('/')}>Ruthven</a>
+      <div class="links">
+        <a href={href('/#honours')}>Honours</a>
+        <a href={href('/players/')}>Players</a>
+        <a href={href('/rules/')}>Rules</a>
+        <a href={href('/#trophies')}>Trophies</a>
+      </div>
+    </nav>
+
+    {!heroNav && <div class="nav-spacer" />}
+
+    <slot />
+
+    <Tartan />
+    <footer>
+      <div class="label">The Ruthven Cup · Est. {established} · Scotland</div>
+      <div class="footer-motto">“{motto}”</div>
+      <div class="copyright">© {year} the Ruthven family</div>
+    </footer>
+
+    <script>
+      // Scroll reveals; disabled for users preferring reduced motion (CSS
+      // already shows .reveal elements in that case).
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            const el = entry.target as HTMLElement;
+            el.style.transitionDelay = (el.dataset.d ?? '0') + 'ms';
+            el.classList.add('in');
+            io.unobserve(el);
+          }
+        },
+        { threshold: 0.15 },
+      );
+      document.querySelectorAll<HTMLElement>('.reveal').forEach((el, i) => {
+        el.dataset.d = String((i % 5) * 90);
+        io.observe(el);
+      });
+    </script>
+
+    <style>
+      nav {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 50;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 48px;
+        background: linear-gradient(180deg, rgba(8, 26, 18, 0.9), rgba(8, 26, 18, 0.6));
+        backdrop-filter: blur(3px);
+      }
+      nav.hero {
+        background: linear-gradient(180deg, rgba(8, 26, 18, 0.85), transparent);
+        animation: navIn 1.2s 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      }
+      @keyframes navIn {
+        from {
+          opacity: 0;
+          transform: translateY(-12px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .nav-spacer {
+        height: 72px;
+      }
+      .wordmark {
+        font-family: var(--sans);
+        font-size: 14px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .links {
+        display: flex;
+        gap: 36px;
+      }
+      .links a {
+        font-family: var(--sans);
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--ink);
+        text-decoration: none;
+        opacity: 0.75;
+        transition: opacity 0.3s, color 0.3s;
+      }
+      .links a:hover {
+        opacity: 1;
+        color: var(--gold-bright);
+      }
+      footer {
+        text-align: center;
+        padding: 48px 24px 36px;
+        background: var(--paper-2);
+      }
+      footer .label {
+        opacity: 0.55;
+      }
+      .footer-motto {
+        font-style: italic;
+        color: var(--gold);
+        margin-top: 12px;
+        font-size: 15px;
+      }
+      .copyright {
+        font-family: var(--sans);
+        font-size: 10px;
+        opacity: 0.35;
+        margin-top: 14px;
+        letter-spacing: 0.1em;
+      }
+      @media (max-width: 760px) {
+        nav {
+          padding: 16px 20px;
+        }
+        .links {
+          gap: 18px;
+        }
+      }
+    </style>
+  </body>
+</html>

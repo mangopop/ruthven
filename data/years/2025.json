@@ -1,0 +1,19 @@
+{
+  "year": 2025,
+  "venue": "Venue Five (TBC)",
+  "location": "Scotland",
+  "date": "2025-06-14",
+  "course": "sample-links",
+  "participants": [
+    "angus-ruthven",
+    "dougal-ruthven",
+    "fergus-ruthven",
+    "hamish-ruthven",
+    "callum-macleod",
+    "ewan-fraser",
+    "rory-campbell",
+    "jock-stewart"
+  ],
+  "tankard": { "winner": "angus-ruthven" },
+  "phallus": { "winner": "callum-macleod", "decidedByPuttOff": true }
+}
