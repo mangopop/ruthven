@@ -38,7 +38,7 @@ const prizeView = (label: string, prize: typeof year.tankard): PrizeView | null 
     puttOff: prize.decidedByPuttOff ?? false,
   };
 };
-const prizes = [prizeView('The Tankard — Family', year.tankard), prizeView('The Phallus Trophy — Guests', year.phallus)].filter(
+const prizes = [prizeView('The Tankard', year.tankard), prizeView('The Phallus Trophy', year.phallus)].filter(
   (p): p is PrizeView => p !== null,
 );
 
