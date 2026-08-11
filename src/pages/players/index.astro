@@ -114,8 +114,13 @@ const guests = players.filter((p) => !p.player.family);
     .player.champ::before {
       content: '★';
       position: absolute;
-      top: 12px;
-      right: 14px;
+      top: 2px;
+      right: 4px;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: var(--gold-bright);
       z-index: 3;
       font-size: 14px;
