@@ -57,7 +57,7 @@ const half = pars ? Math.ceil(pars.length / 2) : 9;
       <div>
         <h1 class="reveal">{year.year}<br /><em>{year.venue}</em></h1>
         <div class="sub reveal">
-          {[prettyDate, year.location, `${year.participants.length} players`, `“${motto}”`].filter(Boolean).join(' · ')}
+          {[prettyDate, year.location, `${year.participants.length} players`].filter(Boolean).join(' · ')}
         </div>
       </div>
       <div class="winners reveal">

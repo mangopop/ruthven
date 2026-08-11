@@ -2,5 +2,6 @@
   "name": "Grundy",
   "family": false,
   "since": 2026,
-  "bio": "SAMPLE PLAYER - replace with a real bio. Guest. Known by one name only, mostly for the shots best left unnamed."
+  "headshot": "grundy.jpg",
+  "bio": "Guest. Known by one name only, mostly for the shots best left unnamed."
 }

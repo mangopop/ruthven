@@ -2,5 +2,6 @@
   "name": "Matt",
   "family": false,
   "since": 2026,
-  "bio": "SAMPLE PLAYER - replace with a real bio. Guest. Reads every putt from three angles, then hits it the way he first saw it."
+  "headshot": "matt.jpg",
+  "bio": "Guest. Reads every putt from three angles, then hits it the way he first saw it."
 }
