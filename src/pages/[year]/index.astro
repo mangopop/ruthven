@@ -77,6 +77,8 @@ const pars = year.courseData?.par ?? null;
 const half = pars ? Math.ceil(pars.length / 2) : 9;
 const rankedCount = board?.filter((e) => e.strokesPosition !== null).length ?? 0;
 const noReturnCount = (board?.length ?? 0) - rankedCount;
+/** Participants with no row at all in the year's scores CSV. */
+const uncarded = board ? year.participants.filter((slug) => !board.some((e) => e.slug === slug)) : [];
 ---
 
 <Base title={`${year.year} — The Ruthven Cup`}>
@@ -248,6 +250,22 @@ const noReturnCount = (board?.length ?? 0) - rankedCount;
                     <span class="label">No return — card incomplete, so it cannot be ranked on strokes</span>
                   </td>
                 </tr>
+              </tbody>
+            )}
+            {uncarded.length > 0 && (
+              <tbody class="uncarded-group" data-points-order={board.length + 1} data-strokes-order={board.length + 1}>
+                {uncarded.map((slug) => (
+                  <tr class="uncarded-row">
+                    <td />
+                    <td>
+                      <span class="nm">{site.players[slug]?.name ?? slug}</span>
+                      <span class:list={['chip', site.players[slug]?.family ? 'fam' : 'guest']}>
+                        {site.players[slug]?.family ? 'Family' : 'Guest'}
+                      </span>
+                    </td>
+                    <td colspan="3" class="not-recorded">Scorecard not recorded</td>
+                  </tr>
+                ))}
               </tbody>
             )}
           </table>
@@ -609,6 +627,14 @@ const noReturnCount = (board?.length ?? 0) - rankedCount;
       font-size: 9px;
       letter-spacing: 0.2em;
       opacity: 0.7;
+    }
+    .uncarded-row td {
+      opacity: 0.5;
+    }
+    .uncarded-row .not-recorded {
+      text-align: left;
+      font-style: italic;
+      font-size: 13px;
     }
 
     .cardrow td {
