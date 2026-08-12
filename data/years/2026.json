@@ -29,6 +29,11 @@
         "decidedByPuttOff": false
     },
     "longestDrive": {
-        "winner": "neil-h"
+        "winner": "neil-h",
+        "distance": "320 yards"
+    },
+    "closestToPin": {
+        "winner": "rich-sinclair",
+        "distance": "15 yards"
     }
 }
