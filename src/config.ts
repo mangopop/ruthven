@@ -4,17 +4,17 @@
  */
 export const images = {
   /** The goat-and-clubs family crest - hero, nav and footer mark. */
-  crest: 'crest.png' as string | null,
+  crest: 'crest.gif' as string | null,
   /** The Ruthven Cup Tankard - trophies section. */
   tankard: 'cup.png' as string | null,
   /** The Phallus Trophy - trophies section. */
   phallus: 'phallus.png' as string | null,
   /** Photo strip of the family cloth; replaces the CSS tartan bands when set. */
-  cloth: 'cloth.png' as string | null,
+  cloth: 'cloth.jpg' as string | null,
   /** Pin flag - emblem for the longest drive side competition. */
   longestDrive: null as string | null,
   /** Ball marker - emblem for the closest to the pin side competition. */
-  closestToPin: null as string | null,
+  closestToPin: 'marker.png' as string | null,
 };
 
 export const motto = 'Deid schaw';

@@ -10,6 +10,9 @@ export interface CardResult {
   totalStrokes: number | null;
   front9Points: number;
   back9Points: number;
+  /** Sum of recorded strokes in each half; null when that half is all blanks. */
+  front9Strokes: number | null;
+  back9Strokes: number | null;
 }
 
 /**
@@ -54,13 +57,18 @@ export function computeCard(
     const received = handicap > 0 ? strokesReceived(handicap, opts.strokeIndex![i]!) : 0;
     return { strokes: gross, points: holePoints(gross, par[i]!, received) };
   });
-  const recorded = holes.filter((h) => h.strokes !== null);
   const half = Math.ceil(holes.length / 2);
+  const sumStrokes = (subset: HoleScore[]): number | null => {
+    const recorded = subset.filter((h) => h.strokes !== null);
+    return recorded.length === 0 ? null : recorded.reduce((sum, h) => sum + h.strokes!, 0);
+  };
   return {
     holes,
     totalPoints: holes.reduce((sum, h) => sum + h.points, 0),
-    totalStrokes: recorded.length === 0 ? null : recorded.reduce((sum, h) => sum + h.strokes!, 0),
+    totalStrokes: sumStrokes(holes),
     front9Points: holes.slice(0, half).reduce((sum, h) => sum + h.points, 0),
     back9Points: holes.slice(half).reduce((sum, h) => sum + h.points, 0),
+    front9Strokes: sumStrokes(holes.slice(0, half)),
+    back9Strokes: sumStrokes(holes.slice(half)),
   };
 }

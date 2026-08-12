@@ -22,7 +22,10 @@ import { photo } from '../lib/paths';
       repeating-linear-gradient(90deg, #143a29 0 12px, #0e2f20 12px 24px);
   }
   .tartan.photo {
-    background-size: 1254px 1254px;
+    /* Scale the strip to the band's height and tile it sideways, so the whole
+       weave shows whatever the source image's dimensions are. */
+    background-size: auto 100%;
     background-repeat: repeat-x;
+    background-position: center;
   }
 </style>
