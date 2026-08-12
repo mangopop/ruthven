@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { loadSite, type YearData } from '../../lib/site';
 import { href, photo } from '../../lib/paths';
-import { motto } from '../../config';
+import { images, motto } from '../../config';
 
 export function getStaticPaths() {
   const site = loadSite();
@@ -41,6 +41,36 @@ const prizeView = (label: string, prize: typeof year.tankard): PrizeView | null 
 const prizes = [prizeView('The Tankard', year.tankard), prizeView('The Phallus Trophy', year.phallus)].filter(
   (p): p is PrizeView => p !== null,
 );
+
+interface SideCompView {
+  label: string;
+  /** Emblem filename under public/photos/, null renders a placeholder. */
+  emblem: string | null;
+  emblemAlt: string;
+  /** Shown in the dashed box while the emblem photo is missing. */
+  emblemPlaceholder: string;
+  name: string | null;
+  distance: string | null;
+}
+const sideComps: SideCompView[] = [
+  {
+    label: 'Longest Drive',
+    emblem: images.longestDrive,
+    emblemAlt: 'A pin flag, the longest drive emblem',
+    emblemPlaceholder: 'Flag',
+    name: year.longestDrive ? site.players[year.longestDrive.winner]!.name : null,
+    distance: year.longestDrive?.distance ?? null,
+  },
+  {
+    label: 'Closest to the Pin',
+    emblem: images.closestToPin,
+    emblemAlt: 'A ball marker, the closest to the pin emblem',
+    emblemPlaceholder: 'Marker',
+    name: year.closestToPin ? site.players[year.closestToPin.winner]!.name : null,
+    distance: year.closestToPin?.distance ?? null,
+  },
+];
+const anySideComp = year.longestDrive !== undefined || year.closestToPin !== undefined;
 
 const board = year.leaderboard;
 const pars = year.courseData?.par ?? null;
@@ -88,6 +118,32 @@ const half = pars ? Math.ceil(pars.length / 2) : 9;
         <img class="group-photo reveal" src={photo(`years/${year.groupPhoto}`)} alt={`The ${year.year} Ruthven Cup field at ${year.venue}`} />
       ) : (
         <div class="placeholder-box group-placeholder reveal">Group photo — {year.year}</div>
+      )
+    }
+
+    {
+      anySideComp && (
+        <section class="side-comps reveal">
+          <div class="label">Side competitions</div>
+          <div class="side-grid">
+            {sideComps.map((comp) => (
+              <div class="side-comp">
+                {comp.emblem ? (
+                  <img class="emblem" src={photo(comp.emblem)} alt={comp.emblemAlt} />
+                ) : (
+                  <div class="placeholder-box emblem-placeholder">{comp.emblemPlaceholder}</div>
+                )}
+                <div>
+                  <span class="label">{comp.label}</span>
+                  <span class="name">
+                    {comp.name ?? '— unclaimed —'}
+                    {comp.distance && <small>{comp.distance}</small>}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       )
     }
 
@@ -306,6 +362,49 @@ const half = pars ? Math.ceil(pars.length / 2) : 9;
         var(--paper-3);
     }
 
+    .side-comps {
+      margin-bottom: 64px;
+    }
+    .side-comps > .label {
+      display: block;
+      margin-bottom: 18px;
+    }
+    .side-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--hairline);
+      border: 1px solid var(--hairline);
+    }
+    .side-comp {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 26px;
+      background: var(--paper-2);
+    }
+    .side-comp .emblem,
+    .side-comp .emblem-placeholder {
+      width: 64px;
+      height: 64px;
+      flex: none;
+      object-fit: contain;
+    }
+    .side-comp .label {
+      display: block;
+      margin-bottom: 6px;
+    }
+    .side-comp .name {
+      font-size: 26px;
+      font-weight: 300;
+    }
+    .side-comp .name small {
+      font-size: 14px;
+      color: var(--gold);
+      font-style: italic;
+      margin-left: 8px;
+    }
+
     .board-head {
       display: flex;
       justify-content: space-between;
@@ -517,6 +616,9 @@ const half = pars ? Math.ceil(pars.length / 2) : 9;
         padding-left: 0;
         border-top: 1px solid var(--hairline);
         padding-top: 24px;
+      }
+      .side-grid {
+        grid-template-columns: 1fr;
       }
       .holes {
         grid-template-columns: repeat(9, minmax(34px, 1fr));

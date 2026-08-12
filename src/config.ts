@@ -11,6 +11,10 @@ export const images = {
   phallus: 'phallus.png' as string | null,
   /** Photo strip of the family cloth; replaces the CSS tartan bands when set. */
   cloth: 'cloth.png' as string | null,
+  /** Pin flag - emblem for the longest drive side competition. */
+  longestDrive: null as string | null,
+  /** Ball marker - emblem for the closest to the pin side competition. */
+  closestToPin: null as string | null,
 };
 
 export const motto = 'Deid schaw';

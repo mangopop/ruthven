@@ -17,7 +17,9 @@
         "neil-h",
         "danny",
         "grundy",
-        "matt"
+        "matt-ellams",
+        "campbell-hood",
+        "simon-jupp"
     ],
     "tankard": {
         "winner": "aidan-ruthven"
@@ -25,5 +27,8 @@
     "phallus": {
         "winner": "rich-sinclair",
         "decidedByPuttOff": false
+    },
+    "longestDrive": {
+        "winner": "neil-h"
     }
 }

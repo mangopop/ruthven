@@ -20,6 +20,8 @@ const { player, stats } = Astro.props;
 const honours = [
   ...stats.tankardWins.map((y) => ({ year: y, prize: 'The Tankard' })),
   ...stats.phallusWins.map((y) => ({ year: y, prize: 'The Phallus Trophy' })),
+  ...stats.longestDriveWins.map((y) => ({ year: y, prize: 'Longest Drive' })),
+  ...stats.closestToPinWins.map((y) => ({ year: y, prize: 'Closest to the Pin' })),
 ].sort((a, b) => a.year - b.year);
 ---
 

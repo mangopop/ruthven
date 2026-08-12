@@ -15,6 +15,8 @@ export interface PrizeResult {
   winner: string;
   points?: number;
   decidedByPuttOff?: boolean;
+  /** Free text as measured on the day, e.g. '287 yards' or '4 ft 2 in'. */
+  distance?: string;
 }
 
 export interface YearFile {
@@ -24,6 +26,10 @@ export interface YearFile {
   location?: string;
   tankard?: PrizeResult;
   phallus?: PrizeResult;
+  /** Side competition: furthest drive down a nominated hole. */
+  longestDrive?: PrizeResult;
+  /** Side competition: nearest the flag on a nominated par 3. */
+  closestToPin?: PrizeResult;
   participants: string[];
   /** Course slug in data/courses/, needed when scores carry strokes. */
   course?: string;
@@ -60,7 +66,7 @@ export function assembleSite(input: RawSiteInput): SiteData {
         throw new Error(`Year ${year.year} lists participant "${slug}" but data/players/${slug}.json does not exist`);
       }
     }
-    for (const prize of [year.tankard, year.phallus]) {
+    for (const prize of [year.tankard, year.phallus, year.longestDrive, year.closestToPin]) {
       if (prize && !input.players[prize.winner]) {
         throw new Error(`Year ${year.year} names winner "${prize.winner}" but data/players/${prize.winner}.json does not exist`);
       }
@@ -128,6 +134,8 @@ export function loadSite(): SiteData {
 export interface PlayerStats {
   tankardWins: number[];
   phallusWins: number[];
+  longestDriveWins: number[];
+  closestToPinWins: number[];
   yearsPlayed: number[];
   bestPoints: number | null;
 }
@@ -135,6 +143,8 @@ export interface PlayerStats {
 export function playerStats(site: SiteData, slug: string): PlayerStats {
   const tankardWins = site.years.filter((y) => y.tankard?.winner === slug).map((y) => y.year);
   const phallusWins = site.years.filter((y) => y.phallus?.winner === slug).map((y) => y.year);
+  const longestDriveWins = site.years.filter((y) => y.longestDrive?.winner === slug).map((y) => y.year);
+  const closestToPinWins = site.years.filter((y) => y.closestToPin?.winner === slug).map((y) => y.year);
   const yearsPlayed = site.years.filter((y) => y.participants.includes(slug)).map((y) => y.year);
   const pointsSeen = site.years.flatMap(
     (y) => y.leaderboard?.filter((e) => e.slug === slug).map((e) => e.totalPoints) ?? [],
@@ -142,6 +152,8 @@ export function playerStats(site: SiteData, slug: string): PlayerStats {
   return {
     tankardWins,
     phallusWins,
+    longestDriveWins,
+    closestToPinWins,
     yearsPlayed,
     bestPoints: pointsSeen.length ? Math.max(...pointsSeen) : null,
   };

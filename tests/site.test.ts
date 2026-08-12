@@ -20,6 +20,8 @@ function baseInput(): RawSiteInput {
         course: 'new-course',
         tankard: { winner: 'angus', points: 36 },
         phallus: { winner: 'guest', points: 18 },
+        longestDrive: { winner: 'guest', distance: '287 yards' },
+        closestToPin: { winner: 'angus' },
       },
     ],
     scoresCsv: { 2025: `${HEADER}\nangus,${PAR_ROW}\nguest,${Array(18).fill(5).join(',')}` },
@@ -51,6 +53,16 @@ describe('assembleSite', () => {
     expect(() => assembleSite(input)).toThrow(/winner "nobody"/);
   });
 
+  it('rejects a side competition winner without a player file', () => {
+    const input = baseInput();
+    input.years[0]!.longestDrive = { winner: 'nobody' };
+    expect(() => assembleSite(input)).toThrow(/winner "nobody"/);
+
+    const other = baseInput();
+    other.years[0]!.closestToPin = { winner: 'nobody' };
+    expect(() => assembleSite(other)).toThrow(/winner "nobody"/);
+  });
+
   it('rejects a missing course file', () => {
     const input = baseInput();
     input.years[1]!.course = 'atlantis';
@@ -72,5 +84,13 @@ describe('playerStats', () => {
     expect(stats.phallusWins).toEqual([]);
     expect(stats.yearsPlayed).toEqual([2024, 2025]);
     expect(stats.bestPoints).toBe(36);
+  });
+
+  it('collects side competition wins', () => {
+    const site = assembleSite(baseInput());
+    expect(playerStats(site, 'angus').closestToPinWins).toEqual([2025]);
+    expect(playerStats(site, 'angus').longestDriveWins).toEqual([]);
+    expect(playerStats(site, 'guest').longestDriveWins).toEqual([2025]);
+    expect(playerStats(site, 'guest').closestToPinWins).toEqual([]);
   });
 });
