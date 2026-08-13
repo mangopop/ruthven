@@ -12,7 +12,7 @@ export const images = {
   /** Photo strip of the family cloth; replaces the CSS tartan bands when set. */
   cloth: 'cloth.jpg' as string | null,
   /** Pin flag - emblem for the longest drive side competition. */
-  longestDrive: null as string | null,
+  longestDrive: 'longestdrive.jpeg' as string | null,
   /** Ball marker - emblem for the closest to the pin side competition. */
   closestToPin: 'marker.png' as string | null,
 };
