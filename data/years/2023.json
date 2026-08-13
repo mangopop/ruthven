@@ -1,7 +1,8 @@
 {
   "year": 2023,
-  "venue": "Venue Three (TBC)",
+  "venue": "Ratho Park",
   "location": "Scotland",
+  "course": "ratho-park",
   "participants": ["chris-ruthven", "patrick-ruthven", "aidan-ruthven", "nicholas-ruthven"],
-  "tankard": { "winner": "chris-ruthven" }
+  "tankard": { "winner": "aidan-ruthven" }
 }

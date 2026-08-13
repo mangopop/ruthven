@@ -87,7 +87,7 @@ The group photo, displayed on that year's page.
 
 1. **Home** - the approved "heritage wow" design: full-screen hero with the family crest (the
    goat-and-clubs logo) above the title, the motto, staggered type entrance and gold shimmer; scrolling marquee of motto and facts; honours
-   board (giant outlined year numerals, winner, venue - generated from year files); count-up stats
+   board (giant outlined year numerals, winner,  generated from year files); count-up stats
    band; player grid preview; side-by-side Tankard and Phallus Trophy panels; tartan trim bands.
 2. **Year page** (`/2025/` etc.) - the approved layout: year switcher across the top; venue and
    date as the headline with both winners alongside; full-width group photo; leaderboard with

@@ -1,14 +1,14 @@
 {
   "year": 2025,
-  "venue": "Venue Five (TBC)",
+  "venue": "Gullane",
   "location": "Scotland",
-  "date": "2025-06-14",
-  "course": "sample-links",
+  "course": "gullane-no-2",
   "participants": [
     "chris-ruthven",
     "patrick-ruthven",
     "aidan-ruthven",
-    "nicholas-ruthven"
+    "nicholas-ruthven",
+    "craig-dugan"
   ],
-  "tankard": { "winner": "chris-ruthven" }
+  "tankard": { "winner": "craig-dugan" }
 }

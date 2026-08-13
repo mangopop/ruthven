@@ -18,7 +18,7 @@ export const images = {
 };
 
 export const motto = 'Deid schaw';
-export const established = 2021;
+export const established = 2019;
 
 
 

@@ -1,8 +1,8 @@
 {
-  "year": 2024,
-  "venue": "Edzell",
+  "year": 2019,
+  "venue": " Carrick Knowe",
   "location": "Scotland",
-  "course": "edzell",
+  "course": "carrick-knowe",
   "participants": ["chris-ruthven", "patrick-ruthven", "aidan-ruthven", "nicholas-ruthven"],
   "tankard": { "winner": "patrick-ruthven" }
 }

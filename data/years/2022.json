@@ -1,7 +1,8 @@
 {
   "year": 2022,
-  "venue": "Venue Two (TBC)",
+  "venue": "Babertongc",
   "location": "Scotland",
+  "course": "baberton",
   "participants": ["chris-ruthven", "patrick-ruthven", "aidan-ruthven", "nicholas-ruthven"],
   "tankard": { "winner": "patrick-ruthven" }
 }
