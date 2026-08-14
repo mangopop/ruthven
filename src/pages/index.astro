@@ -75,6 +75,9 @@ const romanYear = (n: number) => {
       {
         [...years].reverse().map((y) => (
           <a class="row reveal" href={href(`/${y.year}/`)}>
+            {y.courseData?.photo && (
+              <img class="row-venue-photo" src={photo(`courses/${y.courseData.photo}`)} alt="" aria-hidden="true" />
+            )}
             <div class="year">{y.year}</div>
             <div class="who">
               {winnerName(y.tankard?.winner) ?? '— to be engraved —'}
@@ -363,6 +366,7 @@ const romanYear = (n: number) => {
     }
 
     .row {
+      position: relative;
       display: grid;
       grid-template-columns: 180px 1fr auto;
       align-items: baseline;
@@ -371,9 +375,23 @@ const romanYear = (n: number) => {
       border-top: 1px solid var(--hairline);
       text-decoration: none;
       transition: background 0.4s, padding-left 0.4s;
+      overflow: hidden;
     }
     .row:last-child {
       border-bottom: 1px solid var(--hairline);
+    }
+    .row-venue-photo {
+      position: absolute;
+      inset: 0;
+      left: auto;
+      width: 55%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+      filter: grayscale(0.3) saturate(0.8) brightness(0.6);
+      mask-image: linear-gradient(to left, black 0%, transparent 80%);
+      -webkit-mask-image: linear-gradient(to left, black 0%, transparent 80%);
     }
     .row:hover {
       background: rgba(201, 166, 90, 0.05);
