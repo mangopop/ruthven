@@ -87,6 +87,16 @@ const uncarded = board ? year.participants.filter((slug) => !board.some((e) => e
       {years.map((y) => (y.year === year.year ? <span class="on">{y.year}</span> : <a href={href(`/${y.year}/`)}>{y.year}</a>))}
     </div>
 
+    {
+      year.courseData?.photo ? (
+        <div class="venue-photo-wrap reveal">
+          <img class="venue-photo" src={photo(`courses/${year.courseData.photo}`)} alt={`${year.venue}, the venue for ${year.year}`} />
+        </div>
+      ) : (
+        <div class="placeholder-box venue-placeholder reveal">Venue — {year.venue}</div>
+      )
+    }
+
     <div class="year-head">
       <div>
         <h1 class="reveal">{year.year}<br /><em>{year.venue}</em></h1>
@@ -405,6 +415,36 @@ const uncarded = board ? year.participants.filter((slug) => !board.some((e) => e
       color: var(--gold);
       opacity: 0.8;
       margin-top: 4px;
+    }
+
+    .venue-photo-wrap {
+      position: relative;
+      height: 130px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+    }
+    .venue-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(135deg, rgba(201, 166, 90, 0.07) 0 2px, transparent 2px 7px),
+        linear-gradient(180deg, rgba(8, 26, 18, 0.4), rgba(8, 26, 18, 0.65));
+    }
+    .venue-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.35) saturate(0.75) brightness(0.65);
+    }
+    .venue-placeholder {
+      height: 90px;
+      margin-bottom: 12px;
+      background:
+        radial-gradient(ellipse at 50% 60%, rgba(201, 166, 90, 0.1), transparent 65%),
+        var(--paper-2);
     }
 
     .group-photo {

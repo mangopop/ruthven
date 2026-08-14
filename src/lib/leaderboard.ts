@@ -5,6 +5,8 @@ export interface Course {
   name: string;
   par: number[];
   strokeIndex?: number[];
+  /** Filename under public/photos/courses/, absent = placeholder. */
+  photo?: string;
 }
 
 export interface LeaderboardEntry {
