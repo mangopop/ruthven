@@ -15,10 +15,11 @@ const venueCount = new Set(years.map((y) => y.venue)).size;
 const winnerName = (slug: string | undefined) => (slug ? site.players[slug]!.name : null);
 const latestTop = latest.leaderboard?.[0]?.totalPoints ?? null;
 
-// Player preview: current-year field, champions first.
+// Player preview: current-year field, ranked by this year's leaderboard position.
+const positionBySlug = new Map(latest.leaderboard?.map((e) => [e.slug, e.position]) ?? []);
 const preview = latest.participants
   .map((slug) => ({ slug, player: site.players[slug]!, stats: playerStats(site, slug) }))
-  .sort((a, b) => b.stats.tankardWins.length + b.stats.phallusWins.length - (a.stats.tankardWins.length + a.stats.phallusWins.length))
+  .sort((a, b) => (positionBySlug.get(a.slug) ?? Infinity) - (positionBySlug.get(b.slug) ?? Infinity))
   .slice(0, 5);
 
 const romanYear = (n: number) => {
@@ -109,9 +110,9 @@ const romanYear = (n: number) => {
 
   <section class="players" id="players">
     <div class="measure">
-      <div class="label reveal">The Field</div>
+      <div class="label reveal">The Field — {latest.year}</div>
       <h2 class="display reveal">Family, friends,<br />and <em>rivals.</em></h2>
-      <p class="lede reveal">Every player who has ever teed it up for the Cup.</p>
+      <p class="lede reveal">This year's line-up. See the full roster for everyone who's ever teed it up.</p>
       <div class="grid">
         {
           preview.map(({ slug, player, stats }) => {
