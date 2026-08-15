@@ -1,9 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// GitHub Pages project site: https://<user>.github.io/ruthven/
-// If you rename the repo or move to a custom domain, update site and base here.
+// Custom domain: https://ruthvencup.com/
+// If you move back to https://<user>.github.io/ruthven/, restore base: '/ruthven'.
 export default defineConfig({
-  site: 'https://simonnorton.github.io',
-  base: '/ruthven',
+  site: 'https://ruthvencup.com',
+  base: '/',
 });
