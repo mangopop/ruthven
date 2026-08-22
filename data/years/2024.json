@@ -3,6 +3,7 @@
   "venue": "Edzell",
   "location": "Scotland",
   "course": "edzell",
+    "groupPhoto": "2024-group.jpg",
   "participants": ["chris-ruthven", "patrick-ruthven", "aidan-ruthven", "nicholas-ruthven"],
   "tankard": { "winner": "patrick-ruthven" }
 }

@@ -3,12 +3,14 @@
   "venue": "Gullane",
   "location": "Scotland",
   "course": "gullane-no-2",
+  "groupPhoto": "2025-group.jpg",
   "participants": [
     "chris-ruthven",
     "patrick-ruthven",
     "aidan-ruthven",
     "nicholas-ruthven",
-    "craig-dugan"
+    "craig-dugan",
+    "jim"
   ],
   "tankard": { "winner": "craig-dugan" }
 }
