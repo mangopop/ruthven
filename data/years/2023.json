@@ -4,5 +4,6 @@
   "location": "Scotland",
   "course": "ratho-park",
   "participants": ["chris-ruthven", "patrick-ruthven", "aidan-ruthven", "nicholas-ruthven", "craig-dugan", "player-g", "player-c", "player-f"],
-  "tankard": { "winner": "aidan-ruthven" }
+  "tankard": { "winner": "aidan-ruthven" },
+  "groupPhoto": "2023-group.jpg"
 }

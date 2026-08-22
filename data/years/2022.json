@@ -4,5 +4,6 @@
   "location": "Scotland",
   "course": "baberton",
   "participants": ["chris-ruthven", "patrick-ruthven", "aidan-ruthven", "nicholas-ruthven", "craig-dugan", "marker"],
-  "tankard": { "winner": "patrick-ruthven" }
+  "tankard": { "winner": "patrick-ruthven" },
+  "groupPhoto": "2022-group.jpg"
 }
